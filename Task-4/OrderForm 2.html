@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>OrderForm</title>
+</head>
+<body>
+    <h2>ORDER FORM</h2>
+    <form>
+        <fieldset>
+            <legend><strong>Customer Information</strong></legend>
+            <label>Enter your name :</label>
+            <input type="text" name="name" /><br><br>
+            <label>Enter your email :</label>
+            <input type="email" name="email"/><br><br>
+            <label>Enter your Number :</label>
+            <input type="text" name="Number"/><br>
+        </fieldset>
+        <fieldset>
+            <legend><strong>Shipping Address:</strong></legend>
+            <label>Address Line 1:</label>
+            <input type="text" name="Address 1" /><br><br>
+            <label>Address Line 2:</label>
+            <input type="text" name="Address 2" /><br><br>
+            <label>City:</label>
+            <input type="text" name="City" /><br><br>
+            <label>State/Province:</label>
+            <input type="text" name="State" /><br><br>
+            <label>Zip/Postal Code:</label>
+            <input type="text" name="Postal" /><br><br>
+            <label>Country:</label>
+            <input type="text" name="Country" /><br><br>
+        </fieldset>
+        <fieldset>
+            <legend><strong>Product Details:</strong></legend>
+            <label>Product Name::</label>
+            <input type="text" name="Pname" /><br><br>
+            <label>Product Code (if applicable):</label>
+            <input type="text" name="Pcode" /><br><br>
+            <label>Quantity:</label>
+            <input type="text" name="Qnty" /><br><br>
+            <label>Size/Variant (if applicable):</label>
+            <input type="text" name="Size" /><br><br>
+            <label>Color (if applicable)</label>
+            <input type="text" name="color"/><br><br>
+        </fieldset>
+        <fieldset>
+            <legend><strong>Payment Method:</strong></legend>
+            <label for="product">Choose a payment:</label>
+        <select id="product" name="product">
+            <option value="product1">COD</option>
+            <option value="product2">CreditCard</option>
+            <option value="product3">DebitCard</option>
+        </select><br><br>
+        </fieldset>
+        <label>
+            <input type="checkbox" id="agreeCheckbox">I agree to the <a href="terms-and-conditions" target="_blank">terms and conditions</a><br><br>
+        </label>
+            <input type="submit" name="submit"/><br></br>
+    </form>
+</body>
+</html>
