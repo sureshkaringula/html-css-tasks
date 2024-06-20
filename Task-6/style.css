@@ -1,11 +1,13 @@
 body {
-    font-family: Arial, sans-serif;
+    background-color: blanchedalmond;
+    color:black;
+    font-family: 'Times New Roman', Times, serif;
     margin: 0;
-    padding: 0;
+    padding: 0%;
 }
 
 header {
-    background-color: #000000;
+    background-color: #333;
     color: rgb(255, 255, 255);
     padding: 10px 10;
 }
