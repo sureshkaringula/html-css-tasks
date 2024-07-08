@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.example1 {
+  border: 10px dotted black;
+  padding: 10px;
+  background: rgb(255, 0, 0);
+  background-clip: border-box;  
+}
+
+.example2 {
+  border: 10px dotted black;
+  padding: 10px;
+  background: rgb(255, 0, 0);
+  background-clip: padding-box;
+}
+
+.example3 {
+  border: 10px dotted black;
+  padding: 10px;
+  background: rgb(255, 0, 0);
+  background-clip: content-box;
+}
+</style>
+</head>
+<body>
+
+<h1>The Background-Clip Property</h1>
+
+<p>BACKGROUND CLIP-1:</p>
+<div class="example1">
+  <p>The background extends behind the border.</p>
+</div>
+
+<p>BACKGROUND CLIP-2:</p>
+<div class="example2">
+  <p>The background extends to the inside edge of the border.</p>
+</div>
+
+<p>BACKGROUND CLIP-3:</p>
+<div class="example3">
+  <p>The background extends to the edge of the content box.</p>
+</div>
+
+</body>
+</html>
