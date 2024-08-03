@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Card</title>
+    <style>
+        body{ 
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+        .header {
+            background-color: #000000;
+            color: white;
+            padding: 0em 5em;
+            text-align:center;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .score-table th, .score-table td {
+            border: 1px solid #ffffff;
+            padding: 8px;
+            text-align: center;
+        }
+        .score-table {
+            width: 70%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        .score-table th {
+            background-color: #164fa4;
+            color: rgb(0, 0, 0);
+        }
+        .pakistan {
+            width: 70%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        .pakistan th, .pakistan td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .score-table th {
+            background-color: #1939a1;
+            color: rgb(255, 255, 255);
+        }
+        .pakistan th {
+            background-color: #01761c;
+            color: rgb(255, 249, 249);
+        }
+        .team-logo {
+            width: 100px;
+            height: auto;
+            margin: 20px;
+        }
+        .footer {
+            background-color: #94bbde;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 0px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>T20 WC SCORE CARD</h1>
+    </div>
+    <div class="content">
+        <img src="teamindia.jpg" alt="IndiaTeam" class="team-logo">
+        <h2>INDIA vs PAKISTAN</h2>
+        <h3>India Score: 209-6(20)</h3>
+        <table class="score-table">
+            <tr>
+                <th>Player</th>
+                <th>Runs</th>
+                <th>Balls</th>
+                <th>6's</th>
+                <th>4's</th>
+                <th>SR</th>
+            </tr>
+            <tr>
+                <th>R.Sharma</th>
+                <th>52</th>
+                <th>26</th>
+                <th>4</th>
+                <th>4</th>
+                <th>200</th>
+            </tr>
+            <tr>
+                <th>V.Kohli</th>
+                <th>41</th>
+                <th>28</th>
+                <th>1</th>
+                <th>4</th>
+                <th>146.4</th>
+            </tr>
+            <tr>
+                <th>R.Pant</th>
+                <th>15</th>
+                <th>8</th>
+                <th>1</th>
+                <th>1</th>
+                <th>190.6</th>
+            </tr>
+            <tr>
+                <th>Surya</th>
+                <th>58</th>
+                <th>29</th>
+                <th>5</th>
+                <th>4</th>
+                <th>200</th>
+            </tr>
+            <tr>
+                <th>S.Dube</th>
+                <th>0</th>
+                <th>3</th>
+                <th>0</th>
+                <th>0</th>
+                <th>0</th>
+            </tr><tr>
+                <th>H.Pandya</th>
+                <th>21</th>
+                <th>8</th>
+                <th>2</th>
+                <th>1</th>
+                <th>256.6</th>
+            </tr>
+            <tr>
+                <th>R.Jadeja*</th>
+                <th>14</th>
+                <th>10</th>
+                <th>0</th>
+                <th>1</th>
+                <th>140</th>
+            </tr>
+            <tr>
+                <th>A.Patel*</th>
+                <th>9</th>
+                <th>8</th>
+                <th>0</th>
+                <th>0</th>
+                <th>103.4</th>
+            </tr>
+        </table>
+        <table class="pakistan">
+            <tr>
+                <th>Player</th>
+                <th>Overs</th>
+                <th>Dot Balls</th>
+                <th>runs</th>
+                <th>Economy</th>
+            </tr>
+
+            <tr>
+                <th>Shahid Afridi</th>
+                <th>4</th>
+                <th>8</th>
+                <th>36</th>
+                <th>8.0</th>
+            </tr>
+            <tr>
+                <th>M.Amir</th>
+                <th>4</th>
+                <th>6</th>
+                <th>40</th>
+                <th>10.0</th>
+            </tr>
+            <tr>
+                <th>zahir Abbas</th>
+                <th>4</th>
+                <th>6</th>
+                <th>45</th>
+                <th>11.3</th>
+            </tr>
+            <tr>
+                <th>S.Amad</th>
+                <th>2</th>
+                <th>3</th>
+                <th>19</th>
+                <th>9.8</th>
+            </tr>
+            <tr>
+                <th>Sohail</th>
+                <th>4</th>
+                <th>10</th>
+                <th>28</th>
+                <th>6.8</th>
+            </tr>
+            <tr>
+                <th>j.ahmad</th>
+                <th>2</th>
+                <th>4</th>
+                <th>17</th>
+                <th>8.6</th>
+            </tr>
+        </table>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Cricket Dashboard. All rights reserved.</p>
+    </div>
+</body>
+</html>
