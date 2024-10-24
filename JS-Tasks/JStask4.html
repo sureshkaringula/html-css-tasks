@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            /* margin: 0; */
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            background-color: #fff;
+            padding: 20px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #812222;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #169b7a;
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        /* .btn:hover {
+            background-color: #de6060;
+        } */
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #a8b7ab;
+            color: #155724;
+            border: 1px solid #909f94;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Bank Account Form</h2>
+
+        <label for="accountNumber">Account Number</label>
+        <input type="text" id="accountNumber" placeholder="Enter Account Number">
+
+        <label for="accountHolderName">Account Holder Name</label>
+        <input type="text" id="accountHolderName" placeholder="Enter Account Holder Name">
+
+        <label for="balance">Initial Balance</label>
+        <input type="number" id="balance" placeholder="Enter Initial Balance">
+
+        <label for="amount">Enter Amount</label>
+        <input type="number" id="amount" placeholder="Enter Amount">
+
+        <button class="btn" onclick="deposit()">Deposit</button>
+        <button class="btn" onclick="withdraw()">Withdraw</button>
+        <button class="btn" onclick="checkBalance()">Check Balance</button>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        const bankAccount = {
+            accountNumber: '',
+            accountHolderName: '',
+            balance: 0,
+
+            deposit(amount) {
+                this.balance += amount;
+                return this.balance;
+            },
+
+            withdraw(amount) {
+                if (this.balance >= amount) {
+                    this.balance -= amount;
+                } else {
+                    return 'Insufficient balance!';
+                }
+                return this.balance;
+            },
+
+            checkBalance() {
+                return this.balance;
+            }
+        };
+
+        function deposit() {
+            const amount = parseFloat(document.getElementById('amount').value);
+            const result = document.getElementById('result');
+            if (amount <= 0) {
+                result.textContent = 'Please enter a valid amount to deposit!';
+            } else {
+                const newBalance = bankAccount.deposit(amount);
+                result.textContent = `Deposited! New Balance: ₹${newBalance}`;
+            }
+        }
+
+        function withdraw() {
+            const amount = parseFloat(document.getElementById('amount').value);
+            const result = document.getElementById('result');
+            if (amount <= 0) {
+                result.textContent = 'Please enter a valid amount to withdraw!';
+            } else {
+                const result = bankAccount.withdraw(amount);
+                if (result === 'Insufficient balance!') {
+                    result.textContent = result;
+                } else {
+                    result.textContent = `Withdrawn! New Balance: ₹${result}`;
+                }
+            }
+        }
+
+        function checkBalance() {
+            const result = document.getElementById('result');
+            const balance = bankAccount.checkBalance();
+            result.textContent = `Your current balance is: ₹${balance}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #000000;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 15px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Sort Array in Descending Order</h2>
+    
+    <label for="arrayInput">Enter array elements:</label>
+    <input type="text" id="arrayInput" placeholder="e.g., 34,12,5,99,23">
+
+    <button onclick="sortArray()">Sort</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function sortArray() {
+        let input = document.getElementById('arrayInput').value;
+        let array = input.split(',').map(Number);  
+
+        array.sort((a, b) => b - a);
+        document.getElementById('result').textContent = "Sorted Array in Descending Order: " + array.join(', ');
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Manager</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+        input {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            background-color: #7894b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0e233a;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .status.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .status.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Loan Application</h2>
+    <form id="loanForm">
+        <label for="name">Employee Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="income">Monthly Income:</label>
+        <input type="number" id="income" name="income" required>
+
+        <label for="balance">Account Balance:</label>
+        <input type="number" id="balance" name="balance" required>
+
+        <label for="loanAmount">Loan Amount:</label>
+        <input type="number" id="loanAmount" name="loanAmount" required>
+
+        <button type="submit">Apply for Loan</button>
+    </form>
+
+    <div id="loanStatus" class="status"></div>
+</div>
+
+<script>
+   ons
+    const LoanManager = {
+        loans: [],
+        
+        applyLoan: function (applicantName, monthlyIncome, accountBalance, loanAmount) {
+            const loanApplication = {
+                name: applicantName,
+                income: monthlyIncome,
+                balance: accountBalance,
+                amount: loanAmount,
+                status: 'Pending'
+            };
+
+          
+            const isApproved = this.approveLoan(monthlyIncome, accountBalance);
+
+            if (isApproved) {
+                loanApplication.status = 'Approved';
+                this.loans.push(loanApplication);
+                return { success: true, message: 'Loan approved successfully!' };
+            } else {
+                loanApplication.status = 'Rejected';
+                this.loans.push(loanApplication);
+                return { success: false, message: 'Loan rejected. Eligibility criteria not met.' };
+            }
+        },
+
+        approveLoan: function (monthlyIncome, accountBalance) {
+            return monthlyIncome >= 30000 && accountBalance >= 10000;
+        },
+
+        rejectLoan: function (loanApplication) {
+            loanApplication.status = 'Rejected';
+        }
+    };
+
+  
+    const loanForm = document.getElementById('loanForm');
+    const loanStatus = document.getElementById('loanStatus');
+
+    loanForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const income = parseFloat(document.getElementById('income').value);
+        const balance = parseFloat(document.getElementById('balance').value);
+        const loanAmount = parseFloat(document.getElementById('loanAmount').value);
+
+        const result = LoanManager.applyLoan(name, income, balance, loanAmount);
+
+      
+        loanStatus.className = 'status ' + (result.success ? 'success' : 'error');
+        loanStatus.textContent = result.message;
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Discount Calculator</h2>
+        <input type="number" id="costPrice" placeholder="Enter Cost Price">
+        <button class="btn" onclick="actualPrice()">Calculate Selling Price</button>
+
+        <div id="priceResult" class="result"></div>
+    </div>
+
+    <script>
+        function normalPrice() {
+            const costPrice = parseFloat(document.getElementById('costPrice').value);
+            const discount = 0.20;
+
+            if (isNaN(costPrice)) {
+                document.getElementById('priceResult').textContent = 'Please enter a valid cost price.';
+                return;
+            }
+
+            const sellingPrice = costPrice - (costPrice * discount);
+            document.getElementById('priceResult').textContent = `The selling price after discount: ₹${sellingPrice}`;
+        }
+    </script>
+
+</body>
+</html>

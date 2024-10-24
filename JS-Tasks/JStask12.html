@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <style>
+    body {
+        background: url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjgyMi1hZXctMDJfMS5qcGc.jpg') no-repeat center center fixed;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+#language-select {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+   </style>
+</head>
+<body>
+   
+    <div class="container"> 
+        <h1>Google Translation</h4>
+        <p><strong>Select a language:</strong></p>
+        <select id="language-select">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="te">Telugu</option>
+            <option value="fr">French</option>
+            <option value="nl">Dutch</option>
+        </select>
+        <div>
+            <h1 id="translated-text">Hello Welcome to google translate</h1>
+        </div>
+    </div>
+
+
+    <script>
+        document.getElementById("language-select").addEventListener("change", function() {
+    let selectedLanguage = this.value;
+    let translatedText;
+
+    switch(selectedLanguage) {
+        case "hi":
+            translatedText = "नमस्ते, गूगल अनुवाद में आपका स्वागत है";
+            break;
+        case "fr":
+            translatedText = "Salut bienvenue à la traduction Google";
+            break;
+        case "te":
+            translatedText = "హాయ్ గూగుల్ అనువాదానికి స్వాగతం";
+            break;
+        case "nl":
+            translatedText = "Hallo welkom bij Google Vertaling";
+            break;
+        default:
+            translatedText = "Hi welcome to google translation";
+    }
+
+    document.getElementById("translated-text").innerText = translatedText;
+    }
+   );
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family:Georgia, 'Times New Roman', Times, serif;
+      background-color: #ffffff;
+    }
+    .login-container {
+      width: 300px;
+      margin: 100px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .login-container h2 {
+      text-align: center;
+    }
+    .login-container input {
+      width: 95%;
+      padding: 5px;
+      margin: 10px 0;
+      border: 2px solid #ccc;
+      border-radius: 9px;
+    }
+    .login-container button {
+      width: 95%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 10px;
+    }
+    .message {
+      text-align: center;
+      color: rgb(0, 0, 0);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-container">
+  <h2>Student Login</h2>
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <p id="message" class="message"></p>
+</div>
+
+<script>
+  function login() {
+    const correctUsername = "sureshroyals";
+    const correctPassword = "sureshroyals@17";
+
+    const username = document.getElementById("username");
+    const password = document.getElementById("password");
+    const message = document.getElementById("message");
+
+    if (username === correctUsername) {
+      if (password === correctPassword) {
+        message.textContent = "Login success";
+      }else {
+        message.textContent = "Incorrect password";
+      }
+    }else {
+      message.textContent = "Incorrect username or password";
+    }
+  }
+</script>
+</body>
+</html>

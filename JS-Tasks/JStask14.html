@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Timestamps in JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        .timestamp {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Timestamps in Different Formats</h2>
+
+        <div class="timestamp">
+            <strong>Format (dd/mm/yyyy):</strong> <span id="date-format"></span>
+        </div>
+        
+        <div class="timestamp">
+            <strong>Format (hh.mm.ss):</strong> <span id="time-format"></span>
+        </div>
+        
+        <div class="timestamp">
+            <strong>Relative Time (e.g., minutes ago):</strong>
+             <span id="relative-time"></span>
+        </div>
+    </div>
+    <script>
+        function formatDate() {
+            const date = new Date();
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0'); 
+            const year = date.getFullYear();
+
+            return `${day}/${month}/${year}`;
+        }
+
+        function formatTime() {
+            const date = new Date();
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const seconds = String(date.getSeconds()).padStart(2, '0');
+
+            return `${hours}.${minutes}.${seconds}`;
+        }
+        function formatRelativeTime(pastTime) {
+            const now = new Date();
+            const diffInSeconds = Math.floor((now - pastTime) / 1000);
+
+            let interval = Math.floor(diffInSeconds / 31536000);
+            if (interval >= 1) return interval === 1 ? "1 year ago" : `${interval} years ago`;
+
+            interval = Math.floor(diffInSeconds / 2592000); 
+            if (interval >= 1) return interval === 1 ? "1 month ago" : `${interval} months ago`;
+
+            interval = Math.floor(diffInSeconds / 86400); 
+            if (interval >= 1) return interval === 1 ? "1 day ago" : `${interval} days ago`;
+
+            interval = Math.floor(diffInSeconds / 3600); 
+            if (interval >= 1) return interval === 1 ? "1 hour ago" : `${interval} hours ago`;
+
+            interval = Math.floor(diffInSeconds / 60); 
+            if (interval >= 1) return interval === 1 ? "1 minute ago" : `${interval} minutes ago`;
+
+            return diffInSeconds === 1 ? "1 second ago" : `${diffInSeconds} seconds ago`;
+        }
+
+        document.getElementById('date-format').innerText = formatDate();
+        document.getElementById('time-format').innerText = formatTime();
+
+        const fiveMinutesAgo = new Date(new Date().getTime() - 5 * 60 * 1000);
+        document.getElementById('relative-time').innerText = formatRelativeTime(fiveMinutesAgo);
+    </script>
+
+</body>
+</html>

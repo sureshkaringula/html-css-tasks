@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family:'Times New Roman', Times, serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .calculator {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #840000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #d4edda;
+            color: #6c0000;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class = "calculator">
+        <h2>salary calculator</h2>
+        <input type="number" id="deductions" placeholder="enter deductions">
+        <button class="btn" onclick="calculateSalary()">Calculate Salary</button>
+        <div id="salaryResult" class="result"></div>
+    </div>
+
+    <script>
+        function calculateSalary(){
+            const monthlySalary = 25000;
+            const deductions=parseFloat(document.getElementById('deductions').value);
+
+            if(isNaN(deductions)){
+                document.getElementById('salayResult').textContent='please enter a deduction amount';
+                return;
+            }
+
+            const salary = monthlySalary - deductions;
+                document.getElementById('salaryResult').textContent = `your salary after deduction: ${salary}`;
+        }
+    </script>
+</body>
+</html>

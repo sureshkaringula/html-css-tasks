@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password Form</title>
+    <style>
+        body {
+            background: url('https://wallpapercave.com/wp/vXYGQxL.jpg')no-repeat center center fixed;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background: url('https://wallpapercave.com/wp/vXYGQxL.jpg')no-repeat center center fixed;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Reset Password</h2>
+
+        <form id="reset-password-form">
+            <div class="input-group">
+                <label for="new-password">New Password</label>
+                <input type="password" id="new-password" placeholder="Enter new password" required>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Confirm new password" required>
+            </div>
+            
+            <div class="error-message" id="copy-error">Copy is restricted</div>
+            <div class="error-message" id="paste-error">Paste is restricted</div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        const newPasswordInput = document.getElementById('new-password');
+        const confirmPasswordInput = document.getElementById('confirm-password');
+        const copyError = document.getElementById('copy-error');
+        const pasteError = document.getElementById('paste-error');
+        [newPasswordInput, confirmPasswordInput].forEach(input => {
+            input.addEventListener('copy', (e) => {
+                e.preventDefault();
+                copyError.style.display = 'block';
+                pasteError.style.display = 'none';
+            });
+            input.addEventListener('cut', (e) => {
+                e.preventDefault();
+                copyError.style.display = 'block';
+                pasteError.style.display = 'none';
+            });
+            input.addEventListener('paste', (e) => {
+                e.preventDefault();
+                pasteError.style.display = 'block';
+                copyError.style.display = 'none';
+            });
+        });
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+        function removeErrorMessages() {
+            setTimeout(() => {
+                copyError.style.display = 'none';
+                pasteError.style.display = 'none';
+            }, 3000);
+        }
+
+        document.getElementById('reset-password-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const newPassword = newPasswordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+
+            if (newPassword !== confirmPassword) {
+                alert('Passwords do not match!');
+            } else {
+                alert('Password successfully updated!');
+            }
+        });
+        newPasswordInput.addEventListener('input', removeErrorMessages);
+        confirmPasswordInput.addEventListener('input', removeErrorMessages);
+    </script>
+
+</body>
+</html>

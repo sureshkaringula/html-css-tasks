@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #000000;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 15px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Remove Duplicate Elements</h2>
+        <input type="text" id="arrayInput" placeholder=" Use Commas For Separate The Values">
+        <button onclick="removeDuplicateElements()">show unique elements</button>
+
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+       function findDuplicateElements(){
+        const uniqueSet = new Set();
+        const duplicates = [];
+        for(const element of arr){
+            if(!uniqueSet.has(element)){
+                uniqueSet.add(element);
+            }else{
+                duplicates.push(element);
+            }
+        }
+        return{
+            duplicates,
+            uniques:[...uniqueSet],
+        };
+       }
+    </script>
+</body>
+</html>

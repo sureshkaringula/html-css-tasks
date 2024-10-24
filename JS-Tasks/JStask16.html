@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Magnifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            position: relative;
+        }
+        .image {
+            width: 400px;
+            height: auto;
+            border-radius: 10px;
+        }
+        .magnifier-lens {
+            position: absolute;
+            border: 1px solid #d4d4d4;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: none;
+            cursor: none;
+        }
+        .magnified-image {
+            position: absolute;
+            background-repeat: no-repeat;
+            display: none;
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://c4.wallpaperflare.com/wallpaper/29/129/173/jaguar-4k-new-hd-wallpaper-preview.jpg" alt="Sample Image" class="image" id="image">
+        <div class="magnifier-lens" id="lens"></div>
+        <div class="magnified-image" id="magnified"></div>
+    </div>
+    <script>
+        const image = document.getElementById('image');
+        const lens = document.getElementById('lens');
+        const magnified = document.getElementById('magnified');
+
+        image.addEventListener('mousemove', magnify);
+        image.addEventListener('mouseleave', () => {
+            lens.style.display = "none";
+            magnified.style.display = "none";
+        });
+
+        function magnify(e) {
+            const pos = getCursorPos(e);
+            const zoom = 2;
+
+            lens.style.display = "block";
+            magnified.style.display = "block";
+
+            lens.style.left = `${pos.x - lens.offsetWidth / 2}px`;
+            lens.style.top = `${pos.y - lens.offsetHeight / 2}px`;
+
+            magnified.style.backgroundImage = `url(${image.src})`;
+            magnified.style.backgroundSize = `${image.width * zoom}px ${image.height * zoom}px`;
+            magnified.style.backgroundPosition = `-${pos.x * zoom - magnified.offsetWidth / 2}px -${pos.y * zoom - magnified.offsetHeight / 2}px`;
+
+            magnified.style.left = `${pos.x + 120}px`;
+            magnified.style.top = `${pos.y - 100}px`;
+        }
+
+        function getCursorPos(e) {
+            const imgRect = image.getBoundingClientRect();
+            const x = e.pageX - imgRect.left - window.pageXOffset;
+            const y = e.pageY - imgRect.top - window.pageYOffset;
+            return { x, y };
+        }
+    </script>
+
+</body>
+</html>
